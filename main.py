@@ -32,7 +32,7 @@ class MyWidget(QMainWindow):
         try:
             f = open("IP'S").readlines()
             for el in f:
-                ip = el.split(' - ')[1].rstrip()
+                ip = el.rstrip()
                 s = f"sshpass -p '{self.password}' ssh {ip} {txtVal}"
                 os.system(f'gnome-terminal -- sh -c "{s}"')
             self.lineEdit.setText('')
@@ -48,7 +48,7 @@ class MyWidget(QMainWindow):
         try:
             f = open("IP'S").readlines()
             for el in f:
-                ip = el.split(' - ')[1].rstrip()
+                ip = el.rstrip()
                 s = f"sshpass -p '{self.password}' ssh {ip} sudo reboot"
                 os.system(f'gnome-terminal -- sh -c "{s}"')
             self.lineEdit.setText('')
@@ -64,7 +64,7 @@ class MyWidget(QMainWindow):
         try:
             f = open("IP'S").readlines()
             for el in f:
-                ip = el.split(' - ')[1].rstrip()
+                ip = el.rstrip()
                 s = f"sshpass -p '{self.password}' ssh {ip} sudo shutdown -h now"
                 os.system(f'gnome-terminal -- sh -c "{s}"')
             self.lineEdit.setText('')
@@ -82,22 +82,22 @@ class MyWidget(QMainWindow):
         ex.show()
 
     def open_terminal(self):
-        ip = str(self.comboBox.currentText()).split(' - ')[1]
+        ip = str(self.comboBox.currentText())
         s = f"sshpass -p '{self.password}' ssh {ip}"
         os.system(f'gnome-terminal -- sh -c "{s}"')
 
     def off_pc(self):
-        ip = str(self.comboBox.currentText()).split(' - ')[1]
+        ip = str(self.comboBox.currentText())
         s = f"sshpass -p '{self.password}' ssh {ip} sudo shutdown -h now"
         os.system(f'gnome-terminal -- sh -c "{s}"')
 
     def reboot_pc(self):
-        ip = str(self.comboBox.currentText()).split(' - ')[1]
+        ip = str(self.comboBox.currentText())
         s = f"sshpass -p '{self.password}' ssh {ip} sudo reboot"
         os.system(f'gnome-terminal -- sh -c "{s}"')
 
     def info_pc(self):
-        ip = str(self.comboBox.currentText()).split(' - ')[1]
+        ip = str(self.comboBox.currentText())
         s = f"sshpass -p '{self.password}' ssh {ip} cat /proc/cpuinfo"
         os.system(f'gnome-terminal -- sh -c "{s}"')
 

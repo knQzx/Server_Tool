@@ -18,7 +18,7 @@ class Terminal(QMainWindow):
             f = open("IP'S").readlines()
             command = self.lineEdit.text()
             for el in f:
-                ip = el.split(' - ')[1].rstrip()
+                ip = el.rstrip()
                 s = f"sshpass -p '{self.password}' ssh {ip} {command}"
                 os.system(f'gnome-terminal -- sh -c "{s}"')
             self.lineEdit.setText('')
