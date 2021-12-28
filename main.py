@@ -34,7 +34,7 @@ class MyWidget(QMainWindow):
             for el in f:
                 ip = el.split(' - ')[1].rstrip()
                 s = f"sshpass -p '{self.password}' ssh {ip} {txtVal}"
-                os.system(f'gnome-terminal -x sh -c "{s}"')
+                os.system(f'gnome-terminal -- sh -c "{s}"')
             self.lineEdit.setText('')
             QMessageBox.information(self, 'Успех', f"Успешно применил команду на все пк",
                                     QMessageBox.Cancel,
@@ -50,7 +50,7 @@ class MyWidget(QMainWindow):
             for el in f:
                 ip = el.split(' - ')[1].rstrip()
                 s = f"sshpass -p '{self.password}' ssh {ip} sudo reboot"
-                os.system(f'gnome-terminal -x sh -c "{s}"')
+                os.system(f'gnome-terminal -- sh -c "{s}"')
             self.lineEdit.setText('')
             QMessageBox.information(self, 'Успех', f"Успешно перезагрузил все пк",
                                        QMessageBox.Cancel,
@@ -66,7 +66,7 @@ class MyWidget(QMainWindow):
             for el in f:
                 ip = el.split(' - ')[1].rstrip()
                 s = f"sshpass -p '{self.password}' ssh {ip} sudo shutdown -h now"
-                os.system(f'gnome-terminal -x sh -c "{s}"')
+                os.system(f'gnome-terminal -- sh -c "{s}"')
             self.lineEdit.setText('')
             QMessageBox.information(self, 'Успех', f"Успешно выключили все пк",
                                        QMessageBox.Cancel,
@@ -84,22 +84,22 @@ class MyWidget(QMainWindow):
     def open_terminal(self):
         ip = str(self.comboBox.currentText()).split(' - ')[1]
         s = f"sshpass -p '{self.password}' ssh {ip}"
-        os.system(f'gnome-terminal -x sh -c "{s}"')
+        os.system(f'gnome-terminal -- sh -c "{s}"')
 
     def off_pc(self):
         ip = str(self.comboBox.currentText()).split(' - ')[1]
         s = f"sshpass -p '{self.password}' ssh {ip} sudo shutdown -h now"
-        os.system(f'gnome-terminal -x sh -c "{s}"')
+        os.system(f'gnome-terminal -- sh -c "{s}"')
 
     def reboot_pc(self):
         ip = str(self.comboBox.currentText()).split(' - ')[1]
         s = f"sshpass -p '{self.password}' ssh {ip} sudo reboot"
-        os.system(f'gnome-terminal -x sh -c "{s}"')
+        os.system(f'gnome-terminal -- sh -c "{s}"')
 
     def info_pc(self):
         ip = str(self.comboBox.currentText()).split(' - ')[1]
         s = f"sshpass -p '{self.password}' ssh {ip} cat /proc/cpuinfo"
-        os.system(f'gnome-terminal -x sh -c "{s}"')
+        os.system(f'gnome-terminal -- sh -c "{s}"')
 
 
 if __name__ == '__main__':

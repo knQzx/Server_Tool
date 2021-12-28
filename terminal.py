@@ -20,7 +20,7 @@ class Terminal(QMainWindow):
             for el in f:
                 ip = el.split(' - ')[1].rstrip()
                 s = f"sshpass -p '{self.password}' ssh {ip} {command}"
-                os.system(f'gnome-terminal -x sh -c "{s}"')
+                os.system(f'gnome-terminal -- sh -c "{s}"')
             self.lineEdit.setText('')
             QMessageBox.information(self, 'Успех', f"Успешно проведена команда {command}",
                                        QMessageBox.Cancel,
